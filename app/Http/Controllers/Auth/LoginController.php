@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ApiController;
 use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class LoginController extends Controller {
+class LoginController extends ApiController {
 
     use AuthenticatesUsers;
 
@@ -17,31 +17,17 @@ class LoginController extends Controller {
     }
 
     public function login (Request $request) {
-
         $nick = $request->nick;
         $pase = $request->pase;
 
         $user = User::query()->where('nick', $nick)->first() ?? null;
-        if (!$user) {
-            $data = array(
-                'message' => "Usuario no encontrado. Verifique su nick.",
-                'code' => 404
-            );        
-            
-            return response()->json($data, $data['code']);
-        }
+        if (!$user)           
+            return $this->errorResponse("Usuario no encontrado. Verifique su nick.", 404);   
 
         $validatePassword = Hash::check($pase, $user->password);
 
-        if (!$validatePassword) {
-            $data = array(
-                'message' => "Combinación de nick y pase errónea",
-                'code' => 403
-            );        
-            
-            return response()->json($data, $data['code']);
-        }
-            
+        if (!$validatePassword) 
+            return $this->errorResponse("Combinación de nick y pase errónea", 403);
 
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
@@ -49,10 +35,9 @@ class LoginController extends Controller {
 
         $data = array(
             'access_token' => $tokenResult->accessToken,
-            'user' => $user,
-            'code' => 200
+            'user' => $user
         );        
         
-        return response()->json($data, $data['code']);
+        return $this->successResponse($data, 201);
     }
 }

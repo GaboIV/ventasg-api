@@ -10,7 +10,7 @@ class CreateMarcasTable extends Migration {
         Schema::create('marcas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('descripcion');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

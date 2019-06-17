@@ -35,9 +35,9 @@ class UnidadesSeeder extends Seeder {
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'LITRO';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'lts';
 	    $unidad->descripcion_pl = 'LITRO';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'lts';
 	    $unidad->save();
 
 	    $unidad = new Unidad();

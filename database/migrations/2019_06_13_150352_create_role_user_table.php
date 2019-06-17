@@ -12,6 +12,7 @@ class CreateRoleUserTable extends Migration {
         $table->integer('user_id')->unsigned();
         });
     }
+    
     public function down() {
         Schema::dropIfExists('role_user');
     }

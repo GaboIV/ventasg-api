@@ -5,8 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
-{
+class Producto extends Model {
     use Notifiable;
 
     protected $table = 'productos';
@@ -15,12 +14,13 @@ class Producto extends Model
         'codigo', 
         'codigoAlt', 
         'descripcion',
-        'id_unidad',
+        'unidad_id',
         'presentacion',
-        'id_marca',
-        'id_almacen',
-        'id_grupo',
-        'id_subgrupo',
+        'marca_id',
+        'almacen_id',
+        'grupo_id',
+        'subgrupo_id',
+        'imagen',
         'precio1',
         'precio2',
         'precio3',
@@ -31,4 +31,10 @@ class Producto extends Model
         'created_at',
         'updated_at'
     ];
+
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute() {
+        return ($this->imagen) ? url("images/productos/$this->imagen") : null;
+    }
 }

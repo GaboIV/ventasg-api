@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Subgrupo extends Model
-{
+class Subgrupo extends Model {
 	protected $table = 'subgrupos';
 
     protected $fillable = [
