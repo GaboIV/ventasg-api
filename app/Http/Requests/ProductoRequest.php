@@ -38,7 +38,7 @@ class ProductoRequest extends FormRequest {
             'codigo' => 'required|string|unique:productos',
             'descripcion' => 'required|string',
             'unidad_id' => 'required|numeric',
-            'presentacion' => 'required|string',
+            'presentacion' => 'string',
             'marca_id' => 'required|numeric',
             'almacen_id' => 'required|numeric',
             'grupo_id' => 'required|numeric',

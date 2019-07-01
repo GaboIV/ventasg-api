@@ -12,3 +12,5 @@ Route::group(['namespace' => 'Api', 'middleware' => 'auth:api'], function () {
 	Route::resource('grupos', 'grupoController', ['except' => ['create', 'edit']]);
 	Route::resource('almacenes', 'almacenController', ['except' => ['create', 'edit']]);
 });
+
+Route::post('file', 'imagenesController@store');

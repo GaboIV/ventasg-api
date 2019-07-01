@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\File;
+use Illuminate\Notifications\Notifiable;
 
 class Producto extends Model {
     use Notifiable;
@@ -32,9 +33,14 @@ class Producto extends Model {
         'updated_at'
     ];
 
-    protected $appends = ['image_url'];
 
-    public function getImageUrlAttribute() {
-        return ($this->imagen) ? url("images/productos/$this->imagen") : null;
+    public function getImagenAttribute() {
+        $img = $this->id . '.png';
+        $ruta = '/app/public/productos/' . $this->id . '.png';
+        if ( file_exists( storage_path($ruta) ) ) {
+            return $img;
+        } else {
+            return null;
+        }
     }
 }

@@ -18,16 +18,16 @@ class LoginController extends ApiController {
 
     public function login (Request $request) {
         $nick = $request->nick;
-        $pase = $request->pase;
+        $password = $request->password;
 
         $user = User::query()->where('nick', $nick)->first() ?? null;
         if (!$user)           
             return $this->errorResponse("Usuario no encontrado. Verifique su nick.", 404);   
 
-        $validatePassword = Hash::check($pase, $user->password);
+        $validatePassword = Hash::check($password, $user->password);
 
         if (!$validatePassword) 
-            return $this->errorResponse("Combinación de nick y pase errónea", 403);
+            return $this->errorResponse("Combinación de nick y password errónea", 403);
 
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
