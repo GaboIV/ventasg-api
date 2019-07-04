@@ -78,4 +78,13 @@ class productoController extends ApiController {
 
         return $this->errorResponse('El producto que intenta eliminar no existe', 400);
     }
+
+    public function search(Request $request) {
+        $dato = $request->dato;
+
+        $productos = Producto::where('codigo', 'LIKE',  '%' . $dato . '%')
+                            ->orWhere('descripcion', 'LIKE',  '%' . $dato . '%')
+                            ->get();
+        return $productos;
+    }
 }

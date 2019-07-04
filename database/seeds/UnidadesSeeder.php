@@ -42,51 +42,51 @@ class UnidadesSeeder extends Seeder {
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'GALÓN';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'gl';
 	    $unidad->descripcion_pl = 'GALÓN';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'gls';
 	    $unidad->save();
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'CAJA';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'cj';
 	    $unidad->descripcion_pl = 'CAJA';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'cjs';
 	    $unidad->save();
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'BOLSA';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'bl';
 	    $unidad->descripcion_pl = 'BOLSA';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'bls';
 	    $unidad->save();
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'COMBO';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'cb';
 	    $unidad->descripcion_pl = 'COMBO';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'cbs';
 	    $unidad->save();
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'SACO';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'sc';
 	    $unidad->descripcion_pl = 'SACO';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'scs';
 	    $unidad->save();
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'TAMBOR';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'tb';
 	    $unidad->descripcion_pl = 'TAMBOR';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'tbs';
 	    $unidad->save();
 
 	    $unidad = new Unidad();
 	    $unidad->descripcion_sg = 'CUÑETE';
-	    $unidad->acro_sg = 'kg';
+	    $unidad->acro_sg = 'cñ';
 	    $unidad->descripcion_pl = 'CUÑETE';
-	    $unidad->acro_pl = 'kgs';
+	    $unidad->acro_pl = 'cñs';
 	    $unidad->save();
     }
 }
