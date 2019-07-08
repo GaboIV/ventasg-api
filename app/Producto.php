@@ -33,7 +33,6 @@ class Producto extends Model {
         'updated_at'
     ];
 
-
     public function getImagenAttribute() {
         $img = $this->id . '.png';
         $ruta = '/app/public/productos/' . $this->id . '.png';
@@ -42,5 +41,13 @@ class Producto extends Model {
         } else {
             return null;
         }
+    }
+
+    public function productoscomanda() {
+        return $this->hasOne(ProductosComanda::class, 'producto_id', 'id');
+    }
+
+    public function productocaja() {
+        return $this->hasOne(ProductoCaja::class, 'producto_id', 'id');
     }
 }

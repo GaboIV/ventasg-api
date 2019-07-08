@@ -8,9 +8,9 @@ class CreateProductosComandaTable extends Migration {
     public function up() {
         Schema::create('productos_comanda', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('articulo_id');
-            $table->integer('orden');
-            $table->boolean('status');
+            $table->integer('producto_id');
+            $table->integer('orden')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
