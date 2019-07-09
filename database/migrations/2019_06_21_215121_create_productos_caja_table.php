@@ -9,8 +9,8 @@ class CreateProductosCajaTable extends Migration {
         Schema::create('productos_caja', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('producto_id');
-            $table->integer('orden');
-            $table->boolean('status');
+            $table->integer('orden')->default(0);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

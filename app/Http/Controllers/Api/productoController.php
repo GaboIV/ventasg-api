@@ -35,14 +35,16 @@ class productoController extends ApiController {
 
     public function store(ProductoRequest $request) {
         $data = $request->all();
-
-        if ($request->imagen && $request->imagen != null && $request->imagen != "") {
-            $name = time().'.' . explode('/', explode (':', substr($request->imagen, 0, strpos($request->imagen, ';')))[1])[1];
-            \Image::make($request->imagen)->save(storage_path('app/public/productos/').$name);
-            $data['imagen'] = $name;
-        }
+        $imagen = $request->imagen;
+        $data['imagen'] = '';
 
         $producto = Producto::create($data);
+
+        if ($imagen && $imagen != null && $imagen != "") {
+            $name = $producto->id . '.png';
+            \Image::make($request->imagen)->save(storage_path('app/public/productos/').$name);
+            $producto['imagen'] = $name;
+        }
         
         return $this->successResponse($producto, 201);    
     }
@@ -63,7 +65,16 @@ class productoController extends ApiController {
         
         if ($producto != null) {
             $producto->update($request->all());
-            $producto->productosComanda()->create();
+            if (isset($request->productoscomanda['created_at']) || $request->productoscomanda['status'] != 0) {
+                $producto->productosComanda()->updateOrCreate(['producto_id' => $id],$request->productoscomanda);
+                $producto->load('productoscomanda');
+            }
+
+            if (isset($request->productocaja['created_at']) || $request->productocaja['status'] != 0) {
+                $producto->productoCaja()->updateOrCreate(['producto_id' => $id],$request->productocaja);            
+                $producto->load('productocaja');
+            }
+            
             return $this->successResponse($producto, 200);
         }
 
