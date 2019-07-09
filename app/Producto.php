@@ -11,6 +11,8 @@ class Producto extends Model {
 
     protected $table = 'productos';
 
+    protected $with = ["productoscomanda", "productocaja"];
+
     protected $fillable = [
         'codigo', 
         'codigoAlt', 

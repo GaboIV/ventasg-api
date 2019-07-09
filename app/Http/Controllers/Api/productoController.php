@@ -25,9 +25,6 @@ class productoController extends ApiController {
         $productos = Producto::orderBy($attribute)
                         ->paginate(30);
 
-        $productos->productosComanda;
-
-
         $data = array(
             'orden' => $attribute,
             'data' => $productos
@@ -52,6 +49,7 @@ class productoController extends ApiController {
 
     public function show($id) {
         $producto = Producto::find($id);
+        $producto->productoscomanda;
 
         if (is_object($producto)) {
             return $this->successResponse($producto, 200);

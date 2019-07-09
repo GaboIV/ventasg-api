@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductoCaja extends Model {
+	protected $table = 'productos_caja';
+
     protected $fillable = ['producto_id', 'orden', 'status'];
 
     public function producto() {
